@@ -89,3 +89,19 @@ Référentiel complet du SEO Drupal 8-11+ : Metatag (meta tags, Open Graph, Twit
 - `drupal-content-modeling` — Schema.org par type de contenu, champs SEO
 - `drupal-config` — Export/import config Metatag, Pathauto patterns
 - `drupal-migration` — Préserver les alias URL et redirections lors des migrations
+- `drupal-multilingual` — hreflang détaillé, URL par langue
+
+---
+
+## Complémentarité avec les Skills SEO Génériques
+
+> Ce skill est **différent** des skills SEO génériques (`seo`, `seo-audit`, `seo-technical`, `seo-schema`).
+
+| Skill | Rôle |
+|-------|------|
+| `seo`, `seo-audit` | **Analyser** le SEO d'un site (audit, scores, recommandations) |
+| `seo-technical` | **Diagnostiquer** les problèmes techniques (crawlabilité, vitesse) |
+| `seo-schema` | **Valider** les données structurées Schema.org |
+| **`drupal-seo`** | **Implémenter** le SEO dans Drupal (Metatag, Pathauto, Simple Sitemap, JSON-LD via hooks) |
+
+**Workflow :** Le skill `seo-audit` identifie le problème ("meta descriptions manquantes") → `drupal-seo` explique comment le résoudre dans Drupal (configurer Metatag avec les bons tokens).
