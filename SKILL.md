@@ -45,6 +45,10 @@ Référentiel complet du SEO Drupal 8-11+ : Metatag (meta tags, Open Graph, Twit
 | Prévenir le contenu dupliqué (pagination) | Canonical + rel="next/prev" | [metatag.md](metatag.md) |
 | Audit SEO complet | Agent `/drupal-seo-audit` | [agents/seo-audit.md](agents/seo-audit.md) |
 | Vérifier les meta tags en développement | Module `metatag_extended_perms` + DevTools | [metatag.md](metatag.md) |
+| **Analytics : Google Analytics (GA4)** | `drupal/google_analytics` ou `drupal/google_tag` (GTM) | [analytics.md](analytics.md) |
+| **Analytics : Matomo (auto-hébergé)** | `drupal/matomo` — sans tiers, RGPD natif | [analytics.md](analytics.md) |
+| **Cookie consent RGPD** | `drupal/tarte_au_citron` (FR) ou `drupal/cookieyes` | [analytics.md](analytics.md) |
+| Bloquer analytics avant consentement | Tarte au Citron → services Google/Matomo gérés | [analytics.md](analytics.md) |
 
 ## Anti-Patterns Critiques
 
