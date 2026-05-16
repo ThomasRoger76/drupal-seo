@@ -203,3 +203,76 @@ drush sql-query "SELECT * FROM path_alias WHERE path = '/node/42'"
 drush php:eval "\Drupal::service('path_alias.manager')->cacheClear();"
 drush cr
 ```
+
+---
+
+## Robots.txt — Gestion dans Drupal
+
+### Protéger le robots.txt du scaffold
+
+```json
+// composer.json — empêcher le scaffold d'écraser robots.txt
+"extra": {
+  "drupal-scaffold": {
+    "file-mapping": {
+      "[web-root]/robots.txt": false
+    }
+  }
+}
+```
+
+### robots.txt Drupal recommandé
+
+```
+# web/robots.txt — version standard Drupal
+
+User-agent: *
+
+# Ne pas indexer les pages d'administration
+Disallow: /admin/
+Disallow: /user/
+Disallow: /node/add/
+Disallow: /*/edit
+Disallow: /*/delete
+
+# Ne pas indexer les URLs de recherche et filtrées
+Disallow: /search/
+Disallow: /*?*
+
+# Ne pas indexer les fichiers système
+Disallow: /core/
+Disallow: /themes/
+Disallow: /modules/
+Disallow: /profiles/
+Disallow: /vendor/
+
+# Indexer les assets publics
+Allow: /themes/*/assets/
+Allow: /themes/*/images/
+Allow: /themes/*/dist/
+
+# Sitemap
+Sitemap: https://mon-site.com/sitemap.xml
+```
+
+### Module `drupal/robotstxt` (via UI)
+
+```bash
+composer require drupal/robotstxt
+drush en robotstxt -y
+# Configurer via /admin/config/search/robotstxt
+# Permet de modifier robots.txt depuis l'interface sans toucher aux fichiers
+```
+
+### robots.txt par Environnement
+
+```php
+// settings.php — désactiver l'indexation en staging/dev
+// Via Metatag global settings
+$config['metatag.metatag_defaults.global']['tags']['robots'] = 'noindex, nofollow';
+
+// OU via le fichier robots.txt staging
+// → Bloquer tous les robots en staging
+// User-agent: *
+// Disallow: /
+```
